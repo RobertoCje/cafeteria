@@ -8,7 +8,7 @@
   --bg-surface: #1a1a1a;      /* Superficie gris oscuro sutil */
   --accent-gold: #c3a479;     /* Ocre / Café Arena elegante */
   --text-pure: #ffffff;       /* Blanco puro para títulos */
-  --text-muted: #8e8e93;     /* Gris claro para textos secundarios */
+  --text-muted: #8e8e93;      /* Gris claro para textos secundarios */
   --font-clean: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
 }
@@ -59,17 +59,14 @@ nav a {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent; /* Corrige el salto visual alineando la base */
+  padding-bottom: 4px;
 }
 
-nav a:hover {
-  color: var(--text-pure);
-}
-
-nav a.active {
+nav a:hover, nav a.active {
   color: var(--text-pure);
   border-bottom: 1px solid var(--accent-gold);
-  padding-bottom: 4px;
 }
 
 /* ==========================================
@@ -98,7 +95,7 @@ nav a.active {
   margin-bottom: 2.5rem;
 }
 
-/* Botón Minimalista */
+/* Botón Minimalista Base */
 .btn-cta {
   display: inline-block;
   border: 1px solid var(--text-pure);
@@ -108,12 +105,14 @@ nav a.active {
   font-size: 0.8rem;
   letter-spacing: 2px;
   padding: 1rem 2.5rem;
+  background-color: transparent;
   transition: all 0.3s ease;
 }
 
 .btn-cta:hover {
   background-color: var(--text-pure);
   color: var(--bg-dark);
+  border-color: var(--text-pure);
 }
 
 /* ==========================================
@@ -213,56 +212,7 @@ section h2::after {
 }
 
 /* ==========================================
-   6. FOOTER
-   ========================================== */
-footer {
-  text-align: center;
-  padding: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 4rem;
-}
-
-footer p {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-/* ==========================================
-   7. RESPONSIVE DESIGN (MÓVILES)
-   ========================================== */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem 2rem;
-  }
-  
-  .hero-dark h2 {
-    font-size: 2.2rem;
-  }
-  
-  nav ul {
-    gap: 1.5rem;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .product-card {
-    padding: 1.2rem;
-  }
-}
-/* ==========================================
-   8. ESTILOS ESPECÍFICOS DE LA PÁGINA DE INICIO
+   6. ESTILOS ESPECÍFICOS DE LA PÁGINA DE INICIO
    ========================================== */
 
 /* Sección Concepto */
@@ -310,7 +260,7 @@ footer p {
   flex-wrap: wrap;
 }
 
-/* Variaciones de botones */
+/* Variaciones específicas de botones */
 .btn-whatsapp {
   border-color: var(--accent-gold);
   color: var(--accent-gold);
@@ -319,8 +269,230 @@ footer p {
 .btn-whatsapp:hover {
   background-color: var(--accent-gold);
   color: var(--bg-dark);
+  border-color: var(--accent-gold);
 }
 
 .btn-delivery {
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-delivery:hover {
+  background-color: var(--text-pure);
+  color: var(--bg-dark);
+  border-color: var(--text-pure);
+}
+
+/* ==========================================
+   7. FOOTER
+   ========================================== */
+footer {
+  text-align: center;
+  padding: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4rem;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN (MÓVILES)
+   ========================================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  .hero-dark h2 {
+    font-size: 2.2rem;
+  }
+  
+  nav ul {
+    gap: 1.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-card {
+    padding: 1.2rem;
+  }
+}
+/* ==========================================
+   9. SECCIÓN DE CONTACTO (PREMIUM SPLIT LAYOUT)
+   ========================================== */
+
+/* Contenedor principal que divide la pantalla en 2 columnas */
+.contact-wrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* --- COLUMNA IZQUIERDA (INFO) --- */
+.contact-info-side {
+  text-align: left;
+}
+
+.contact-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.contact-info-side h2 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.contact-info-side h2::after {
+  display: none; /* Quitamos la línea de en medio genérica */
+}
+
+.contact-info-side p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.direct-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.channel-item span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.channel-item p {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-pure);
+  margin-bottom: 0;
+}
+
+/* --- COLUMNA DERECHA (FORMULARIO FLOAT) --- */
+.contact-form-side {
+  background-color: var(--bg-surface);
+  padding: 3rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Animación de etiquetas flotantes modernas */
+.form-group-minimal {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.form-group-minimal input,
+.form-group-minimal textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-pure);
+  padding: 0.6rem 0;
+  font-family: var(--font-clean);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group-minimal label {
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Cuando el usuario hace clic o escribe, la etiqueta "vuela" hacia arriba */
+.form-group-minimal input:focus ~ label,
+.form-group-minimal input:not(:placeholder-shown) ~ label,
+.form-group-minimal textarea:focus ~ label,
+.form-group-minimal textarea:not(:placeholder-shown) ~ label {
+  top: -1.2rem;
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.form-group-minimal input:focus,
+.form-group-minimal textarea:focus {
+  border-bottom: 1px solid var(--accent-gold);
+}
+
+/* Botón Premium */
+.btn-submit-premium {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--text-pure);
+  color: var(--text-pure);
+  padding: 1.2rem;
+  font-family: var(--font-clean);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit-premium:hover {
+  background-color: var(--text-pure);
+  color: var(--bg-dark);
+}
+
+/* --- ADAPTACIÓN MÓVIL --- */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 1.5rem;
+  }
+  
+  .contact-info-side h2 {
+    font-size: 2.2rem;
+  }
+  
+  .contact-form-side {
+    padding: 2rem;
+  }
 }
