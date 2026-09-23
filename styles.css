@@ -1,0 +1,326 @@
+/* ==========================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================== */
+@import url('https://googleapis.com');
+
+:root {
+  --bg-dark: #121212;         /* Negro mate profundo */
+  --bg-surface: #1a1a1a;      /* Superficie gris oscuro sutil */
+  --accent-gold: #c3a479;     /* Ocre / Café Arena elegante */
+  --text-pure: #ffffff;       /* Blanco puro para títulos */
+  --text-muted: #8e8e93;     /* Gris claro para textos secundarios */
+  --font-clean: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-pure);
+  font-family: var(--font-clean);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   2. HEADER (MINIMALISTA)
+   ========================================== */
+header {
+  padding: 2rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+header h1 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--text-pure);
+}
+
+nav a.active {
+  color: var(--text-pure);
+  border-bottom: 1px solid var(--accent-gold);
+  padding-bottom: 4px;
+}
+
+/* ==========================================
+   3. HERO SECTOR (IMPACTO)
+   ========================================== */
+.hero-dark {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.hero-dark h2 {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-pure);
+}
+
+.hero-dark p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+/* Botón Minimalista */
+.btn-cta {
+  display: inline-block;
+  border: 1px solid var(--text-pure);
+  color: var(--text-pure);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 1rem 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: var(--text-pure);
+  color: var(--bg-dark);
+}
+
+/* ==========================================
+   4. SECCIONES GENERALES Y CONTENEDORES
+   ========================================== */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+section h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+section h2::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: var(--accent-gold);
+  margin: 1rem auto 0 auto;
+}
+
+/* ==========================================
+   5. SECCIÓN DE MENÚ (TARJETAS DIGITALES)
+   ========================================== */
+.menu-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.category-block {
+  margin-bottom: 5rem;
+}
+
+.category-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+/* Rejilla de productos adaptativa */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* Estilo minimalista de la tarjeta de producto */
+.product-card {
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover {
+  border-color: rgba(195, 164, 121, 0.4);
+  transform: translateY(-2px);
+}
+
+.product-info h4 {
+  font-family: var(--font-clean);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-pure);
+  margin-bottom: 0.4rem;
+}
+
+.product-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.product-price {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   6. FOOTER
+   ========================================== */
+footer {
+  text-align: center;
+  padding: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4rem;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   7. RESPONSIVE DESIGN (MÓVILES)
+   ========================================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  .hero-dark h2 {
+    font-size: 2.2rem;
+  }
+  
+  nav ul {
+    gap: 1.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-card {
+    padding: 1.2rem;
+  }
+}
+/* ==========================================
+   8. ESTILOS ESPECÍFICOS DE LA PÁGINA DE INICIO
+   ========================================== */
+
+/* Sección Concepto */
+.concept-section {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.concept-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-gold);
+}
+
+.concept-text {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* Sección Cómo Pedir */
+.order-section {
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-text {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* Contenedor de aplicaciones */
+.apps-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Variaciones de botones */
+.btn-whatsapp {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--accent-gold);
+  color: var(--bg-dark);
+}
+
+.btn-delivery {
+  border-color: rgba(255, 255, 255, 0.2);
+}
